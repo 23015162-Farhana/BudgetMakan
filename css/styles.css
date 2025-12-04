@@ -1,0 +1,63 @@
+/* Budget Makan Colour Palette:
+   - Fresh Green: #4CAF50
+   - Soft Yellow: #FFF9C4
+   - Clean White: #FFFFFF
+   - Light Grey: #F5F5F5
+   - Accent Blue: #2196F3
+*/
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #F5F5F5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background: #4CAF50;
+    color: #FFF;
+    padding: 1.5rem 1rem;
+    text-align: center;
+}
+
+h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2.5rem;
+}
+
+main {
+    padding: 2rem 1rem;
+}
+
+section#canteen-list {
+    background: #FFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(76,175,80,0.08);
+    padding: 1.5rem;
+    margin: 0 auto;
+    max-width: 700px;
+}
+
+footer {
+    background: #2196F3;
+    color: #FFF;
+    text-align: center;
+    padding: 1rem;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+@media (max-width: 600px) {
+    main {
+        padding: 1rem 0.5rem;
+    }
+    section#canteen-list {
+        padding: 1rem;
+        max-width: 100%;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+}
