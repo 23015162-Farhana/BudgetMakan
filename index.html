@@ -7,17 +7,57 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Budget Makan</h1>
-        <p>Discover canteen menus, compare prices, and order affordable meals online</p>
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <a href="#" class="logo">Budget <span>Makan</span></a>
+                <small class="tag">Affordable campus meals</small>
+            </div>
+            <nav class="top-nav" aria-label="Main navigation">
+                <button id="campus-btn" class="campus-btn">All campuses ▾</button>
+            </nav>
+        </div>
+        <div class="container hero">
+            <h1>Find cheap, quick, and halal-aware meals near you</h1>
+            <p class="lead">Browse canteen menus, compare prices, and order ahead — no queues.</p>
+            <div class="search-row">
+                <label for="search" class="visually-hidden">Search menu or stall</label>
+                <input id="search" placeholder="Search stalls, dishes or prices (e.g. nasi, chicken, <$5)" />
+                <select id="campus-select" aria-label="Choose campus">
+                    <option value="all">All campuses</option>
+                    <option value="main">Main Campus</option>
+                    <option value="north">North Campus</option>
+                </select>
+            </div>
+        </div>
     </header>
-    <main>
-        <section id="canteen-list">
-            <!-- Canteen menus and stalls will be dynamically loaded here -->
+
+    <main class="container main-content">
+        <section id="canteen-list" class="canteen-grid" aria-live="polite">
+            <!-- JS will render canteen cards here -->
         </section>
     </main>
-    <footer>
-        <p>&copy; 2025 Budget Makan. All rights reserved.</p>
+
+    <button id="cart-btn" class="cart-btn" aria-label="Open cart">
+        <span class="cart-count" aria-hidden="true">0</span>
+        🛒
+    </button>
+
+    <div id="cart-modal" class="modal" aria-hidden="true" role="dialog" aria-label="Cart">
+        <div class="modal-content">
+            <h2>Your Cart</h2>
+            <ul id="cart-items"></ul>
+            <div class="modal-actions">
+                <button id="checkout">Checkout</button>
+                <button id="close-cart">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>&copy; 2025 Budget Makan — Designed for students.</small>
+        </div>
     </footer>
     <script src="js/app.js"></script>
 </body>

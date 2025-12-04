@@ -1,15 +1,159 @@
-// Budget Makan JS Features
-// - Dynamic menu loading
-// - Price comparison
-// - Order functionality
-// - Accessibility enhancements
-// - Performance optimizations
+// Budget Makan interactive behavior (simple demo)
+const sampleData = [
+    {
+        id: 'main-ctn',
+        campus: 'main',
+        name: 'Central Canteen',
+        img: 'https://via.placeholder.com/120?text=Canteen',
+        stalls: [
+            { id: 's1', name: 'Nasi Goreng Pak Ali', price: 3.5, halal: true },
+            { id: 's2', name: 'Chicken Rice Corner', price: 4.0, halal: true },
+            { id: 's3', name: 'Western Grill', price: 6.5, halal: false }
+        ]
+    },
+    {
+        id: 'north-ctn',
+        campus: 'north',
+        name: 'North Campus Food Hall',
+        img: 'https://via.placeholder.com/120?text=Food+Hall',
+        stalls: [
+            { id: 's4', name: 'Vegan Bites', price: 5.0, halal: true },
+            { id: 's5', name: 'Budget Burgers', price: 4.5, halal: false }
+        ]
+    }
+];
 
-document.addEventListener('DOMContentLoaded', function() {
-    // Example: Load canteen data (placeholder)
-    const canteenList = document.getElementById('canteen-list');
-    canteenList.innerHTML = `<h2>Welcome to Budget Makan!</h2>
-        <p>Browse canteen menus, compare prices, and order your meal online.</p>`;
+let cart = JSON.parse(localStorage.getItem('bm_cart') || '[]');
 
-    // Future: Fetch and render menus, enable ordering, etc.
+function formatPrice(v){
+    return `S$${v.toFixed(2)}`;
+}
+
+function renderCanteens(filterText = '', campus = 'all'){
+    const container = document.getElementById('canteen-list');
+    container.innerHTML = '';
+    const filtered = sampleData.filter(c=> campus==='all' || c.campus===campus);
+    filtered.forEach(c => {
+        const card = document.createElement('article');
+        card.className = 'card';
+        card.innerHTML = `
+            <div class="card-header">
+                <img src="${c.img}" alt="${c.name}" loading="lazy" />
+                <div>
+                    <h3>${c.name}</h3>
+                    <div class="muted">${c.stalls.length} stalls • ${c.campus} campus</div>
+                </div>
+            </div>
+            <div class="badges" aria-hidden="true"></div>
+            <div class="stalls-list"></div>
+            <div class="price-row">
+                <div class="muted">Lowest from <span class="price">${formatPrice(Math.min(...c.stalls.map(s=>s.price)))}</span></div>
+                <button class="btn" data-canteen="${c.id}">View stalls</button>
+            </div>
+        `;
+
+        // render stalls (filter by text)
+        const stallsList = card.querySelector('.stalls-list');
+        c.stalls.forEach(s => {
+            const textMatch = (s.name+" "+s.price).toLowerCase().includes(filterText.toLowerCase());
+            if(filterText && !textMatch) return;
+            const li = document.createElement('div');
+            li.className = 'stall-row';
+            li.style.display = 'flex';
+            li.style.justifyContent = 'space-between';
+            li.style.alignItems = 'center';
+            li.style.padding = '0.45rem 0';
+            li.innerHTML = `<div>
+                    <div><strong>${s.name}</strong></div>
+                    <div class="muted" style="font-size:0.85rem">${s.halal?'<span class="badge halal">Halal</span>':'<span class="badge">Non-halal</span>'}</div>
+                </div>
+                <div style="display:flex;gap:0.5rem;align-items:center">
+                    <div class="price">${formatPrice(s.price)}</div>
+                    <button class="btn add" data-id="${s.id}" data-name="${s.name}" data-price="${s.price}">Add</button>
+                </div>`;
+            stallsList.appendChild(li);
+        });
+
+        container.appendChild(card);
+    });
+
+    attachAddButtons();
+    updateCartCount();
+}
+
+function attachAddButtons(){
+    document.querySelectorAll('.btn.add').forEach(b => {
+        b.addEventListener('click', e=>{
+            const id = b.dataset.id;
+            const name = b.dataset.name;
+            const price = parseFloat(b.dataset.price);
+            addToCart({id,name,price,qty:1});
+        });
+    });
+}
+
+function addToCart(item){
+    const existing = cart.find(i=>i.id===item.id);
+    if(existing){ existing.qty += 1; }
+    else cart.push(item);
+    localStorage.setItem('bm_cart', JSON.stringify(cart));
+    updateCartCount();
+}
+
+function updateCartCount(){
+    const count = cart.reduce((s,i)=>s+i.qty,0);
+    document.querySelectorAll('.cart-count').forEach(el=>el.textContent = count);
+}
+
+function renderCartModal(){
+    const modal = document.getElementById('cart-modal');
+    const list = document.getElementById('cart-items');
+    list.innerHTML = '';
+    if(cart.length===0){ list.innerHTML = '<li class="muted">Cart is empty</li>'; return; }
+    cart.forEach(i=>{
+        const li = document.createElement('li');
+        li.style.display='flex';li.style.justifyContent='space-between';li.style.padding='0.5rem 0';
+        li.innerHTML = `<div>${i.name} <small class="muted">x${i.qty}</small></div><div>${formatPrice(i.price*i.qty)}</div>`;
+        list.appendChild(li);
+    });
+}
+
+document.addEventListener('DOMContentLoaded', ()=>{
+    const search = document.getElementById('search');
+    const campusSelect = document.getElementById('campus-select');
+    const cartBtn = document.getElementById('cart-btn');
+    const cartModal = document.getElementById('cart-modal');
+    const closeCart = document.getElementById('close-cart');
+    const checkout = document.getElementById('checkout');
+
+    renderCanteens();
+
+    search.addEventListener('input', e=>{
+        renderCanteens(e.target.value, campusSelect.value);
+    });
+
+    campusSelect.addEventListener('change', e=>{
+        document.getElementById('campus-btn').textContent = e.target.options[e.target.selectedIndex].text + ' ▾';
+        renderCanteens(search.value, e.target.value);
+    });
+
+    cartBtn.addEventListener('click', ()=>{
+        cartModal.setAttribute('aria-hidden','false');
+        renderCartModal();
+    });
+
+    closeCart.addEventListener('click', ()=>{
+        cartModal.setAttribute('aria-hidden','true');
+    });
+
+    checkout.addEventListener('click', ()=>{
+        if(cart.length===0) { alert('Your cart is empty'); return; }
+        // Simulate checkout
+        alert('Order placed! (demo)');
+        cart = [];
+        localStorage.removeItem('bm_cart');
+        updateCartCount();
+        cartModal.setAttribute('aria-hidden','true');
+    });
+
 });
