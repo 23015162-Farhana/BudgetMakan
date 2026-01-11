@@ -69,7 +69,7 @@ function renderCanteens(filterText = '', campus = 'all'){
                 </div>
                 <div style="display:flex;gap:0.5rem;align-items:center">
                     <div class="price">${formatPrice(s.price)}</div>
-                    <button class="btn add" data-id="${s.id}" data-name="${s.name}" data-price="${s.price}">Add</button>
+                    <button class="btn add" data-id="${s.id}" data-name="${s.name}" data-price="${s.price}" data-halal="${s.halal}">Add</button>
                 </div>`;
             stallsList.appendChild(li);
         });
@@ -87,7 +87,8 @@ function attachAddButtons(){
             const id = b.dataset.id;
             const name = b.dataset.name;
             const price = parseFloat(b.dataset.price);
-            addToCart({id,name,price,qty:1});
+            const halal = b.dataset.halal === 'true';
+            addToCart({id,name,price,halal,qty:1});
             
             // Visual feedback: darken button
             b.classList.add('clicked');
@@ -126,6 +127,7 @@ function renderCartModal(){
         li.style.display='flex';li.style.justifyContent='space-between';li.style.alignItems='center';li.style.padding='0.5rem 0';li.style.borderBottom='1px solid #eee';
         li.innerHTML = `<div>
             <div><strong>${i.name}</strong></div>
+            <div style="font-size:0.75rem;margin-top:0.25rem">${i.halal?'<span class="badge halal">Halal</span>':'<span class="badge">Non-halal</span>'}</div>
             <small class="muted">Qty: ${i.qty} × ${formatPrice(i.price)} = ${formatPrice(i.price*i.qty)}</small>
         </div>
         <button class="btn-remove" data-id="${i.id}" style="background:#ff6b6b;border:none;color:#fff;padding:0.35rem 0.6rem;border-radius:6px;cursor:pointer;font-size:0.85rem">Remove</button>`;
