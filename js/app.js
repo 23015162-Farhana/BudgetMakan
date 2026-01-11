@@ -105,6 +105,13 @@ function updateCartCount(){
     document.querySelectorAll('.cart-count').forEach(el=>el.textContent = count);
 }
 
+function removeFromCart(itemId){
+    cart = cart.filter(i => i.id !== itemId);
+    localStorage.setItem('bm_cart', JSON.stringify(cart));
+    updateCartCount();
+    renderCartModal();
+}
+
 function renderCartModal(){
     const modal = document.getElementById('cart-modal');
     const list = document.getElementById('cart-items');
@@ -112,9 +119,22 @@ function renderCartModal(){
     if(cart.length===0){ list.innerHTML = '<li class="muted">Cart is empty</li>'; return; }
     cart.forEach(i=>{
         const li = document.createElement('li');
-        li.style.display='flex';li.style.justifyContent='space-between';li.style.padding='0.5rem 0';
-        li.innerHTML = `<div>${i.name} <small class="muted">x${i.qty}</small></div><div>${formatPrice(i.price*i.qty)}</div>`;
+        li.style.display='flex';li.style.justifyContent='space-between';li.style.alignItems='center';li.style.padding='0.5rem 0';li.style.borderBottom='1px solid #eee';
+        li.innerHTML = `<div>
+            <div><strong>${i.name}</strong></div>
+            <small class="muted">Qty: ${i.qty} × ${formatPrice(i.price)} = ${formatPrice(i.price*i.qty)}</small>
+        </div>
+        <button class="btn-remove" data-id="${i.id}" style="background:#ff6b6b;border:none;color:#fff;padding:0.35rem 0.6rem;border-radius:6px;cursor:pointer;font-size:0.85rem">Remove</button>`;
         list.appendChild(li);
+    });
+    attachRemoveButtons();
+}
+
+function attachRemoveButtons(){
+    document.querySelectorAll('.btn-remove').forEach(btn => {
+        btn.addEventListener('click', () => {
+            removeFromCart(btn.dataset.id);
+        });
     });
 }
 
