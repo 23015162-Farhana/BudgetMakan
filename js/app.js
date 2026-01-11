@@ -88,6 +88,10 @@ function attachAddButtons(){
             const name = b.dataset.name;
             const price = parseFloat(b.dataset.price);
             addToCart({id,name,price,qty:1});
+            
+            // Visual feedback: darken button
+            b.classList.add('clicked');
+            setTimeout(() => b.classList.remove('clicked'), 300);
         });
     });
 }
