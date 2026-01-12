@@ -6,9 +6,36 @@ const sampleData = [
         name: 'Central Canteen',
         img: 'https://via.placeholder.com/120?text=Canteen',
         stalls: [
-            { id: 's1', name: 'Nasi Goreng Pak Ali', price: 3.5, halal: true },
-            { id: 's2', name: 'Chicken Rice Corner', price: 4.0, halal: true },
-            { id: 's3', name: 'Western Grill', price: 6.5, halal: false }
+            {
+                stallId: 'st1',
+                stallName: 'Nasi Goreng Pak Ali',
+                halal: true,
+                items: [
+                    { id: 's1-1', name: 'Nasi Goreng', price: 3.5 },
+                    { id: 's1-2', name: 'Nasi Goreng with Egg', price: 4.0 },
+                    { id: 's1-3', name: 'Nasi Goreng with Chicken', price: 4.5 }
+                ]
+            },
+            {
+                stallId: 'st2',
+                stallName: 'Western Nice',
+                halal: false,
+                items: [
+                    { id: 's2-1', name: 'Chicken Chop', price: 6.5 },
+                    { id: 's2-2', name: 'Chicken Cutlet', price: 6.0 },
+                    { id: 's2-3', name: 'Fish & Chips', price: 7.0 }
+                ]
+            },
+            {
+                stallId: 'st3',
+                stallName: 'Mee Masala',
+                halal: true,
+                items: [
+                    { id: 's3-1', name: 'Mee Siam', price: 4.5 },
+                    { id: 's3-2', name: 'Mee Soto', price: 5.0 },
+                    { id: 's3-3', name: 'Mee Goreng', price: 4.0 }
+                ]
+            }
         ]
     },
     {
@@ -17,8 +44,26 @@ const sampleData = [
         name: 'North Campus Food Hall',
         img: 'https://via.placeholder.com/120?text=Food+Hall',
         stalls: [
-            { id: 's4', name: 'Vegan Bites', price: 5.0, halal: true },
-            { id: 's5', name: 'Budget Burgers', price: 4.5, halal: false }
+            {
+                stallId: 'st4',
+                stallName: 'Vegan Bites',
+                halal: true,
+                items: [
+                    { id: 's4-1', name: 'Veggie Bowl', price: 5.0 },
+                    { id: 's4-2', name: 'Tofu Curry', price: 5.5 },
+                    { id: 's4-3', name: 'Vegan Pasta', price: 6.0 }
+                ]
+            },
+            {
+                stallId: 'st5',
+                stallName: 'Budget Burgers',
+                halal: false,
+                items: [
+                    { id: 's5-1', name: 'Classic Burger', price: 4.5 },
+                    { id: 's5-2', name: 'Double Cheese Burger', price: 5.5 },
+                    { id: 's5-3', name: 'Crispy Chicken Burger', price: 5.0 }
+                ]
+            }
         ]
     }
 ];
@@ -44,36 +89,66 @@ function renderCanteens(filterText = '', campus = 'all'){
                     <div class="muted">${c.stalls.length} stalls • ${c.campus} campus</div>
                 </div>
             </div>
-            <div class="badges" aria-hidden="true"></div>
             <div class="stalls-list"></div>
-            <div class="price-row">
-                <div class="muted">Lowest from <span class="price">${formatPrice(Math.min(...c.stalls.map(s=>s.price)))}</span></div>
-                <button class="btn" data-canteen="${c.id}">View stalls</button>
-            </div>
         `;
 
-        // render stalls (filter by text)
+        // render stalls with their menu items
         const stallsList = card.querySelector('.stalls-list');
-        c.stalls.forEach(s => {
-            const textMatch = (s.name+" "+s.price).toLowerCase().includes(filterText.toLowerCase());
-            if(filterText && !textMatch) return;
-            const li = document.createElement('div');
-            li.className = 'stall-row';
-            li.style.display = 'flex';
-            li.style.justifyContent = 'space-between';
-            li.style.alignItems = 'center';
-            li.style.padding = '0.45rem 0';
-            li.innerHTML = `<div>
-                    <div><strong>${s.name}</strong></div>
-                    <div class="muted" style="font-size:0.85rem">${s.halal?'<span class="badge halal">Halal</span>':'<span class="badge">Non-halal</span>'}</div>
+        let minPrice = Infinity;
+        
+        c.stalls.forEach(stall => {
+            // Create stall header
+            const stallDiv = document.createElement('div');
+            stallDiv.style.marginBottom = '1rem';
+            stallDiv.style.borderBottom = '2px solid #f0f0f0';
+            stallDiv.style.paddingBottom = '0.75rem';
+            
+            const stallHeader = document.createElement('div');
+            stallHeader.style.display = 'flex';
+            stallHeader.style.alignItems = 'center';
+            stallHeader.style.justifyContent = 'space-between';
+            stallHeader.style.marginBottom = '0.5rem';
+            stallHeader.innerHTML = `
+                <div>
+                    <strong style="font-size:0.95rem">${stall.stallName}</strong>
+                    <div class="muted" style="font-size:0.8rem">${stall.halal?'<span class="badge halal">Halal</span>':'<span class="badge">Non-halal</span>'}</div>
                 </div>
-                <div style="display:flex;gap:0.5rem;align-items:center">
-                    <div class="price">${formatPrice(s.price)}</div>
-                    <button class="btn add" data-id="${s.id}" data-name="${s.name}" data-price="${s.price}" data-halal="${s.halal}">Add</button>
-                </div>`;
-            stallsList.appendChild(li);
+            `;
+            stallDiv.appendChild(stallHeader);
+            
+            // Create menu items for this stall
+            const itemsDiv = document.createElement('div');
+            itemsDiv.style.marginLeft = '0.5rem';
+            
+            stall.items.forEach(item => {
+                const textMatch = (item.name+" "+item.price).toLowerCase().includes(filterText.toLowerCase());
+                if(filterText && !textMatch) return;
+                
+                minPrice = Math.min(minPrice, item.price);
+                
+                const itemRow = document.createElement('div');
+                itemRow.style.display = 'flex';
+                itemRow.style.justifyContent = 'space-between';
+                itemRow.style.alignItems = 'center';
+                itemRow.style.padding = '0.35rem 0';
+                itemRow.style.borderBottom = '1px solid #f5f5f5';
+                
+                itemRow.innerHTML = `
+                    <div style="flex:1">
+                        <div style="font-size:0.9rem">${item.name}</div>
+                    </div>
+                    <div style="display:flex;gap:0.5rem;align-items:center">
+                        <div class="price" style="font-weight:700">${formatPrice(item.price)}</div>
+                        <button class="btn add" data-id="${item.id}" data-name="${item.name}" data-price="${item.price}" data-halal="${stall.halal}">Add</button>
+                    </div>
+                `;
+                itemsDiv.appendChild(itemRow);
+            });
+            
+            stallDiv.appendChild(itemsDiv);
+            stallsList.appendChild(stallDiv);
         });
-
+        
         container.appendChild(card);
     });
 
