@@ -35,6 +35,17 @@ const sampleData = [
                     { id: 's3-2', name: 'Mee Soto', price: 5.0 },
                     { id: 's3-3', name: 'Mee Goreng', price: 4.0 }
                 ]
+            },
+            {
+                stallId: 'st3-drinks',
+                stallName: 'Fresh Drinks',
+                halal: true,
+                items: [
+                    { id: 's3-d1', name: 'Iced Lemon Tea', price: 2.5 },
+                    { id: 's3-d2', name: 'Iced Milo', price: 2.0 },
+                    { id: 's3-d3', name: 'Sugarcane Juice', price: 3.0 },
+                    { id: 's3-d4', name: 'Thai Iced Tea', price: 3.5 }
+                ]
             }
         ]
     },
@@ -62,6 +73,17 @@ const sampleData = [
                     { id: 's5-1', name: 'Classic Burger', price: 4.5 },
                     { id: 's5-2', name: 'Double Cheese Burger', price: 5.5 },
                     { id: 's5-3', name: 'Crispy Chicken Burger', price: 5.0 }
+                ]
+            },
+            {
+                stallId: 'st5-drinks',
+                stallName: 'Beverage Corner',
+                halal: true,
+                items: [
+                    { id: 's5-d1', name: 'Iced Coffee', price: 3.0 },
+                    { id: 's5-d2', name: 'Bubble Tea', price: 4.0 },
+                    { id: 's5-d3', name: 'Fresh Orange Juice', price: 3.5 },
+                    { id: 's5-d4', name: 'Iced Chocolate', price: 2.5 }
                 ]
             }
         ]
