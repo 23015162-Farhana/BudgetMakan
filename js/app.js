@@ -247,8 +247,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const cartBtn = document.getElementById('cart-btn');
     const chatbotBtn = document.getElementById('chatbot-btn');
     const cartModal = document.getElementById('cart-modal');
+    const checkoutModal = document.getElementById('checkout-modal');
+    const confirmationModal = document.getElementById('confirmation-modal');
     const closeCart = document.getElementById('close-cart');
     const checkout = document.getElementById('checkout');
+    const checkoutForm = document.getElementById('checkout-form');
+    const backToCart = document.getElementById('back-to-cart');
+    const continueShopping = document.getElementById('continue-shopping');
 
     renderCanteens();
 
@@ -278,12 +283,62 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     checkout.addEventListener('click', ()=>{
         if(cart.length===0) { alert('Your cart is empty'); return; }
-        // Simulate checkout
-        alert('Order placed! (demo)');
+        // Move to checkout form
+        cartModal.setAttribute('aria-hidden','true');
+        checkoutModal.setAttribute('aria-hidden','false');
+        updateOrderSummary();
+    });
+
+    backToCart.addEventListener('click', ()=>{
+        checkoutModal.setAttribute('aria-hidden','true');
+        cartModal.setAttribute('aria-hidden','false');
+    });
+
+    checkoutForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const email = document.getElementById('email').value;
+        const delivery = document.getElementById('delivery').value;
+        const notes = document.getElementById('notes').value;
+
+        // Calculate total
+        const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+        // Show confirmation
+        document.getElementById('confirmation-message').textContent = `Thank you for your order, ${name}!`;
+        
+        const orderDetailsHtml = `
+            <strong>Order Details:</strong><br>
+            ${cart.map(i => `<div>${i.name} (x${i.qty}): S$${(i.price*i.qty).toFixed(2)}</div>`).join('')}
+            <hr>
+            <strong>Total: S$${total.toFixed(2)}</strong><br><br>
+            <strong>Delivery To:</strong><br>
+            ${delivery}<br><br>
+            <strong>Contact:</strong><br>
+            ${phone} / ${email}
+            ${notes ? `<br><br><strong>Special Requests:</strong><br>${notes}` : ''}
+        `;
+        document.getElementById('order-details').innerHTML = orderDetailsHtml;
+
+        checkoutModal.setAttribute('aria-hidden','true');
+        confirmationModal.setAttribute('aria-hidden','false');
+
+        // Clear form
+        checkoutForm.reset();
         cart = [];
         localStorage.removeItem('bm_cart');
         updateCartCount();
-        cartModal.setAttribute('aria-hidden','true');
     });
+
+    continueShopping.addEventListener('click', ()=>{
+        confirmationModal.setAttribute('aria-hidden','true');
+        renderCanteens();
+    });
+
+    function updateOrderSummary(){
+        const total = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+        document.getElementById('total-price').textContent = `S$${total.toFixed(2)}`;
+    }
 
 });
