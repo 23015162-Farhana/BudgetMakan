@@ -245,6 +245,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     const search = document.getElementById('search');
     const campusSelect = document.getElementById('campus-select');
     const cartBtn = document.getElementById('cart-btn');
+    const chatbotBtn = document.getElementById('chatbot-btn');
     const cartModal = document.getElementById('cart-modal');
     const closeCart = document.getElementById('close-cart');
     const checkout = document.getElementById('checkout');
@@ -267,6 +268,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     closeCart.addEventListener('click', ()=>{
         cartModal.setAttribute('aria-hidden','true');
+    });
+
+    chatbotBtn.addEventListener('click', ()=>{
+        if(window.botpressWebChat){
+            window.botpressWebChat.sendEvent({type:'toggle'});
+        }
     });
 
     checkout.addEventListener('click', ()=>{
