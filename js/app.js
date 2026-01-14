@@ -12,8 +12,8 @@ const sampleData = [
                 halal: true,
                 items: [
                     { id: 's1-1', name: 'Nasi Goreng', price: 3.5, img: 'https://images.unsplash.com/photo-1609501676725-7186f017a4b7?w=100&h=100&fit=crop' },
-                    { id: 's1-2', name: 'Nasi Goreng with Egg', price: 4.0, img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop' },
-                    { id: 's1-3', name: 'Nasi Goreng with Chicken', price: 4.5, img: 'https://images.unsplash.com/photo-1626082927389-6cd097cda1ec?w=100&h=100&fit=crop' }
+                    { id: 's1-2', name: 'Nasi Goreng with Egg', price: 4.0, img: 'https://images.unsplash.com/photo-1645467081327-ed7ecc5bf08f?w=100&h=100&fit=crop' },
+                    { id: 's1-3', name: 'Nasi Goreng with Chicken', price: 4.5, img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop' }
                 ]
             },
             {
@@ -22,7 +22,7 @@ const sampleData = [
                 halal: false,
                 items: [
                     { id: 's2-1', name: 'Chicken Chop', price: 6.5, img: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=100&h=100&fit=crop' },
-                    { id: 's2-2', name: 'Chicken Cutlet', price: 6.0, img: 'https://images.unsplash.com/photo-1562547256-0e1f0a6b69dc?w=100&h=100&fit=crop' },
+                    { id: 's2-2', name: 'Chicken Cutlet', price: 6.0, img: 'https://images.unsplash.com/photo-1626082927389-6cd097cda1ec?w=100&h=100&fit=crop' },
                     { id: 's2-3', name: 'Fish & Chips', price: 7.0, img: 'https://images.unsplash.com/photo-1573165159223-b80f27b93873?w=100&h=100&fit=crop' }
                 ]
             },
@@ -31,9 +31,9 @@ const sampleData = [
                 stallName: 'Mee Masala',
                 halal: true,
                 items: [
-                    { id: 's3-1', name: 'Mee Siam', price: 4.5, img: 'https://images.unsplash.com/photo-1557872552-c7207ebd0944?w=100&h=100&fit=crop' },
+                    { id: 's3-1', name: 'Mee Siam', price: 4.5, img: 'https://images.unsplash.com/photo-1569718212e3-3a95ffb3fe5d?w=100&h=100&fit=crop' },
                     { id: 's3-2', name: 'Mee Soto', price: 5.0, img: 'https://images.unsplash.com/photo-1645467081327-ed7ecc5bf08f?w=100&h=100&fit=crop' },
-                    { id: 's3-3', name: 'Mee Goreng', price: 4.0, img: 'https://images.unsplash.com/photo-1569718212e3-3a95ffb3fe5d?w=100&h=100&fit=crop' }
+                    { id: 's3-3', name: 'Mee Goreng', price: 4.0, img: 'https://images.unsplash.com/photo-1626082927389-6cd097cda1ec?w=100&h=100&fit=crop' }
                 ]
             },
             {
@@ -41,9 +41,9 @@ const sampleData = [
                 stallName: 'Fresh Drinks',
                 halal: true,
                 items: [
-                    { id: 's3-d1', name: 'Iced Lemon Tea', price: 2.5, img: 'https://images.unsplash.com/photo-1554866585-ae23d6fa2b61?w=100&h=100&fit=crop' },
+                    { id: 's3-d1', name: 'Iced Lemon Tea', price: 2.5, img: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=100&h=100&fit=crop' },
                     { id: 's3-d2', name: 'Iced Milo', price: 2.0, img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=100&h=100&fit=crop' },
-                    { id: 's3-d3', name: 'Sugarcane Juice', price: 3.0, img: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=100&h=100&fit=crop' },
+                    { id: 's3-d3', name: 'Sugarcane Juice', price: 3.0, img: 'https://images.unsplash.com/photo-1599599810694-b5ac4dd64c7c?w=100&h=100&fit=crop' },
                     { id: 's3-d4', name: 'Thai Iced Tea', price: 3.5, img: 'https://images.unsplash.com/photo-1597318867205-db91f5d7b784?w=100&h=100&fit=crop' }
                 ]
             }
@@ -61,7 +61,7 @@ const sampleData = [
                 halal: true,
                 items: [
                     { id: 's4-1', name: 'Veggie Bowl', price: 5.0, img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop' },
-                    { id: 's4-2', name: 'Tofu Curry', price: 5.5, img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=100&h=100&fit=crop' },
+                    { id: 's4-2', name: 'Tofu Curry', price: 5.5, img: 'https://images.unsplash.com/photo-1626082927389-6cd097cda1ec?w=100&h=100&fit=crop' },
                     { id: 's4-3', name: 'Vegan Pasta', price: 6.0, img: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=100&h=100&fit=crop' }
                 ]
             },
@@ -72,7 +72,7 @@ const sampleData = [
                 items: [
                     { id: 's5-1', name: 'Classic Burger', price: 4.5, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=100&h=100&fit=crop' },
                     { id: 's5-2', name: 'Double Cheese Burger', price: 5.5, img: 'https://images.unsplash.com/photo-1550547990-25967502a778?w=100&h=100&fit=crop' },
-                    { id: 's5-3', name: 'Crispy Chicken Burger', price: 5.0, img: 'https://images.unsplash.com/photo-1562547256-0e1f0a6b69dc?w=100&h=100&fit=crop' }
+                    { id: 's5-3', name: 'Crispy Chicken Burger', price: 5.0, img: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=100&h=100&fit=crop' }
                 ]
             },
             {
