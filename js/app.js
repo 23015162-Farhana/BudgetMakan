@@ -4,16 +4,16 @@ const sampleData = [
         id: 'main-ctn',
         campus: 'main',
         name: 'Central Canteen',
-        img: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=200&fit=crop',
+        img: '',
         stalls: [
             {
                 stallId: 'st1',
                 stallName: 'Nasi Goreng Pak Ali',
                 halal: true,
                 items: [
-                    { id: 's1-1', name: 'Nasi Goreng', price: 3.5, img: 'https://images.unsplash.com/photo-1609501676725-7186f017a4b7?w=100&h=100&fit=crop' },
-                    { id: 's1-2', name: 'Nasi Goreng with Egg', price: 4.0, img: 'https://images.unsplash.com/photo-1626082927389-6cd097cda1ec?w=100&h=100&fit=crop' },
-                    { id: 's1-3', name: 'Nasi Goreng with Chicken', price: 4.5, img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop' }
+                    { id: 's1-1', name: 'Nasi Goreng', price: 3.5, img: '' },
+                    { id: 's1-2', name: 'Nasi Goreng with Egg', price: 4.0, img: '' },
+                    { id: 's1-3', name: 'Nasi Goreng with Chicken', price: 4.5, img: '' }
                 ]
             },
             {
@@ -21,9 +21,9 @@ const sampleData = [
                 stallName: 'Western Nice',
                 halal: false,
                 items: [
-                    { id: 's2-1', name: 'Chicken Chop', price: 6.5, img: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=100&h=100&fit=crop' },
-                    { id: 's2-2', name: 'Chicken Cutlet', price: 6.0, img: 'https://images.unsplash.com/photo-1626082927389-6cd097cda1ec?w=100&h=100&fit=crop' },
-                    { id: 's2-3', name: 'Fish & Chips', price: 7.0, img: 'https://images.unsplash.com/photo-1573165159223-b80f27b93873?w=100&h=100&fit=crop' }
+                    { id: 's2-1', name: 'Chicken Chop', price: 6.5, img: '' },
+                    { id: 's2-2', name: 'Chicken Cutlet', price: 6.0, img: '' },
+                    { id: 's2-3', name: 'Fish & Chips', price: 7.0, img: '' }
                 ]
             },
             {
@@ -31,9 +31,9 @@ const sampleData = [
                 stallName: 'Mee Masala',
                 halal: true,
                 items: [
-                    { id: 's3-1', name: 'Mee Siam', price: 4.5, img: 'https://images.unsplash.com/photo-1569718212e3-3a95ffb3fe5d?w=100&h=100&fit=crop' },
-                    { id: 's3-2', name: 'Mee Soto', price: 5.0, img: 'https://images.unsplash.com/photo-1645467081327-ed7ecc5bf08f?w=100&h=100&fit=crop' },
-                    { id: 's3-3', name: 'Mee Goreng', price: 4.0, img: 'https://images.unsplash.com/photo-1626082927389-6cd097cda1ec?w=100&h=100&fit=crop' }
+                    { id: 's3-1', name: 'Mee Siam', price: 4.5, img: '' },
+                    { id: 's3-2', name: 'Mee Soto', price: 5.0, img: '' },
+                    { id: 's3-3', name: 'Mee Goreng', price: 4.0, img: '' }
                 ]
             },
             {
@@ -41,10 +41,10 @@ const sampleData = [
                 stallName: 'Fresh Drinks',
                 halal: true,
                 items: [
-                    { id: 's3-d1', name: 'Iced Lemon Tea', price: 2.5, img: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=100&h=100&fit=crop' },
-                    { id: 's3-d2', name: 'Iced Milo', price: 2.0, img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=100&h=100&fit=crop' },
-                    { id: 's3-d3', name: 'Sugarcane Juice', price: 3.0, img: 'https://images.unsplash.com/photo-1599599810694-b5ac4dd64c7c?w=100&h=100&fit=crop' },
-                    { id: 's3-d4', name: 'Thai Iced Tea', price: 3.5, img: 'https://images.unsplash.com/photo-1597318867205-db91f5d7b784?w=100&h=100&fit=crop' }
+                    { id: 's3-d1', name: 'Iced Lemon Tea', price: 2.5, img: '' },
+                    { id: 's3-d2', name: 'Iced Milo', price: 2.0, img: '' },
+                    { id: 's3-d3', name: 'Sugarcane Juice', price: 3.0, img: '' },
+                    { id: 's3-d4', name: 'Thai Iced Tea', price: 3.5, img: '' }
                 ]
             }
         ]
@@ -53,16 +53,16 @@ const sampleData = [
         id: 'north-ctn',
         campus: 'north',
         name: 'North Campus Food Hall',
-        img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=200&fit=crop',
+        img: '',
         stalls: [
             {
                 stallId: 'st4',
                 stallName: 'Vegan Bites',
                 halal: true,
                 items: [
-                    { id: 's4-1', name: 'Veggie Bowl', price: 5.0, img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop' },
-                    { id: 's4-2', name: 'Tofu Curry', price: 5.5, img: 'https://images.unsplash.com/photo-1626082927389-6cd097cda1ec?w=100&h=100&fit=crop' },
-                    { id: 's4-3', name: 'Vegan Pasta', price: 6.0, img: 'https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=100&h=100&fit=crop' }
+                    { id: 's4-1', name: 'Veggie Bowl', price: 5.0, img: '' },
+                    { id: 's4-2', name: 'Tofu Curry', price: 5.5, img: '' },
+                    { id: 's4-3', name: 'Vegan Pasta', price: 6.0, img: '' }
                 ]
             },
             {
@@ -70,9 +70,9 @@ const sampleData = [
                 stallName: 'Budget Burgers',
                 halal: false,
                 items: [
-                    { id: 's5-1', name: 'Classic Burger', price: 4.5, img: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=100&h=100&fit=crop' },
-                    { id: 's5-2', name: 'Double Cheese Burger', price: 5.5, img: 'https://images.unsplash.com/photo-1550547990-25967502a778?w=100&h=100&fit=crop' },
-                    { id: 's5-3', name: 'Crispy Chicken Burger', price: 5.0, img: 'https://images.unsplash.com/photo-1598103442097-8b74394b95c6?w=100&h=100&fit=crop' }
+                    { id: 's5-1', name: 'Classic Burger', price: 4.5, img: '' },
+                    { id: 's5-2', name: 'Double Cheese Burger', price: 5.5, img: '' },
+                    { id: 's5-3', name: 'Crispy Chicken Burger', price: 5.0, img: '' }
                 ]
             },
             {
@@ -80,10 +80,10 @@ const sampleData = [
                 stallName: 'Beverage Corner',
                 halal: true,
                 items: [
-                    { id: 's5-d1', name: 'Iced Coffee', price: 3.0, img: 'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=100&h=100&fit=crop' },
-                    { id: 's5-d2', name: 'Bubble Tea', price: 4.0, img: 'https://images.unsplash.com/photo-1618548183384-4f88f7bccb84?w=100&h=100&fit=crop' },
-                    { id: 's5-d3', name: 'Fresh Orange Juice', price: 3.5, img: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?w=100&h=100&fit=crop' },
-                    { id: 's5-d4', name: 'Iced Chocolate', price: 2.5, img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=100&h=100&fit=crop' }
+                    { id: 's5-d1', name: 'Iced Coffee', price: 3.0, img: '' },
+                    { id: 's5-d2', name: 'Bubble Tea', price: 4.0, img: '' },
+                    { id: 's5-d3', name: 'Fresh Orange Juice', price: 3.5, img: '' },
+                    { id: 's5-d4', name: 'Iced Chocolate', price: 2.5, img: '' }
                 ]
             }
         ]
@@ -105,7 +105,7 @@ function renderCanteens(filterText = '', campus = 'all'){
         card.className = 'card';
         card.innerHTML = `
             <div class="card-header">
-                <img src="${c.img}" alt="${c.name}" loading="lazy" />
+                ${c.img ? `<img src="${c.img}" alt="${c.name}" loading="lazy" />` : ''}
                 <div>
                     <h3>${c.name}</h3>
                     <div class="muted">${c.stalls.length} stalls • ${c.campus} campus</div>
@@ -157,7 +157,7 @@ function renderCanteens(filterText = '', campus = 'all'){
                 itemRow.style.gap = '0.75rem';
                 
                 itemRow.innerHTML = `
-                    <img src="${item.img}" alt="${item.name}" style="width:60px;height:60px;border-radius:8px;object-fit:cover;flex-shrink:0" loading="lazy" />
+                    ${item.img ? `<img src="${item.img}" alt="${item.name}" style="width:60px;height:60px;border-radius:8px;object-fit:cover;flex-shrink:0" loading="lazy" />` : ''}
                     <div style="flex:1">
                         <div style="font-size:0.9rem">${item.name}</div>
                     </div>
