@@ -12,7 +12,7 @@ const sampleData = [
                 halal: true,
                 items: [
                     { id: 's1-1', name: 'Nasi Goreng', price: 3.5, img: 'https://images.unsplash.com/photo-1609501676725-7186f017a4b7?w=100&h=100&fit=crop' },
-                    { id: 's1-2', name: 'Nasi Goreng with Egg', price: 4.0, img: 'https://images.unsplash.com/photo-1585238341710-4913a3f70f50?w=100&h=100&fit=crop' },
+                    { id: 's1-2', name: 'Nasi Goreng with Egg', price: 4.0, img: 'https://images.unsplash.com/photo-1626082927389-6cd097cda1ec?w=100&h=100&fit=crop' },
                     { id: 's1-3', name: 'Nasi Goreng with Chicken', price: 4.5, img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=100&h=100&fit=crop' }
                 ]
             },
