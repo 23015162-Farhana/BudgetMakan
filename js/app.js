@@ -4,7 +4,7 @@ const sampleData = [
         id: 'main-ctn',
         campus: 'main',
         name: 'Central Canteen',
-        img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&h=180&fit=crop',
+        img: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=200&fit=crop',
         stalls: [
             {
                 stallId: 'st1',
@@ -53,7 +53,7 @@ const sampleData = [
         id: 'north-ctn',
         campus: 'north',
         name: 'North Campus Food Hall',
-        img: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=300&h=180&fit=crop',
+        img: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=200&fit=crop',
         stalls: [
             {
                 stallId: 'st4',
