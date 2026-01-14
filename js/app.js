@@ -53,7 +53,7 @@ const sampleData = [
         id: 'north-ctn',
         campus: 'north',
         name: 'North Campus Food Hall',
-        img: 'https://images.unsplash.com/photo-1504674900968-2cc02f17ad34?w=300&h=180&fit=crop',
+        img: 'https://images.unsplash.com/photo-1555939594-58d7cb561a1a?w=300&h=180&fit=crop',
         stalls: [
             {
                 stallId: 'st4',
