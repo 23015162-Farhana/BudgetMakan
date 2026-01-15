@@ -2,7 +2,7 @@
 const sampleData = [
     {
         id: 'main-ctn',
-        campus: 'main',
+        campus: 'lawn',
         name: 'Lawn Canteen',
         img: '',
         stalls: [
