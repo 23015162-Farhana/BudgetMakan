@@ -3,7 +3,7 @@ const sampleData = [
     {
         id: 'main-ctn',
         campus: 'main',
-        name: 'Central Canteen',
+        name: 'Lawn Canteen',
         img: '',
         stalls: [
             {
@@ -202,6 +202,24 @@ function addToCart(item){
     else cart.push(item);
     localStorage.setItem('bm_cart', JSON.stringify(cart));
     updateCartCount();
+    showToast(`${item.name} added to cart!`);
+}
+
+function showToast(message){
+    // Remove existing toast if any
+    const existingToast = document.querySelector('.toast');
+    if(existingToast) existingToast.remove();
+    
+    // Create and show new toast
+    const toast = document.createElement('div');
+    toast.className = 'toast';
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    // Remove after 2.5 seconds
+    setTimeout(() => {
+        toast.remove();
+    }, 2500);
 }
 
 function updateCartCount(){
